@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Warehouse</title>
+    <style>
+        /* Write your CSS solution here 
+        https://stackoverflow.com/questions/4830624/target-first-level-lis-and-not-the-nested-lis
+        */
+        ul > li {
+            font-weight: bold;
+        }
+        ul > li li  {
+            font-weight: normal;
+            font-style: italic;
+        }
+        ul > li li > ul > li {
+            font-weight: normal;
+            font-style: normal;
+            text-decoration: underline;
+        }
+    </style>
+  </head>
+  <body>
+      
+    <ul>
+      <li>Warehouse
+        <ul>
+          <li>London
+            <ul>
+              <li>10 cabbages</li>
+              <li>5 avocados</li>
+            </ul>
+          </li>
+        </ul>
+        <ul>
+          <li>Yorkshire
+            <ul>
+              <li>5 pumpkins</li>
+              <li>20 carrots</li>
+            </ul>
+          </li>
+        </ul>
+      </li>
+    </ul>
+  </body>
+</html>
+

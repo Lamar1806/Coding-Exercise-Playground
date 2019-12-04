@@ -1,0 +1,95 @@
+//Crop Ratio
+<?php
+class CropRatio
+{
+    private $totalWeight;
+    private $crops = array();
+
+    public function add($name, $cropWeight)
+    {
+        $currentCropWeight = 0;
+        if(!array_key_exists($name, $this->crops)) {
+            $this->crops[$name] = $cropWeight;
+        }else{
+            $currentCropWeight += $cropWeight;
+            // $this->crops[$name] += $cropWeight;
+            // echo $currentCropWeight;
+        }
+
+        $this->totalWeight += $currentCropWeight;
+        // $this->totalWeight += $currentCropWeight;
+    }
+
+    public function proportion($name)
+    {
+        return $this->crops[$name] / $this->totalWeight;
+    }
+}
+
+$cropRatio = new CropRatio;
+$cropRatio->add('Wheat', 4);
+
+$cropRatio->add('Wheat', 5);
+$cropRatio->add('Rice', 1);
+
+echo "Wheat: " . $cropRatio->proportion('Wheat');
+
+
+
+
+
+
+
+sqllite 
+delete from orders where customer.balance < 0
+
+
+javascript recursive apple
+function countItems(arr, item) {
+    // Write the code that goes here
+    let found = [];    
+
+    arr.forEach((x)=>{
+        
+        if(Array.isArray(x)){
+            countItems(x, item)
+        }
+        if(x == item){
+            found.push(x);
+        }
+    })
+    return found.length;
+}
+  
+var arr = [
+  "apple",
+  ["banana", "strawberry", "apple"]
+];
+console.log(countItems(arr, "apple"));
+
+
+
+
+
+Hide function
+function setup() {
+  // Write your code here.
+  let button = document.getElementById('button').
+  button.addEventListener("click",setup);
+  button.style.opacity = "0";
+  setTimeout(()=>button.style.opacity = "1", 1000)
+}
+
+// Example case. 
+document.body.innerHTML = `<button type="button" id="btn">Hide Me!</button>`;
+
+setup(); 
+
+var button = document.getElementById('btn');
+button.click();
+console.log(button.style.display != 'none');
+
+
+
+//create a link to new page using 
+<a href="https://www.bing.com/search?q=calculator">Is a  &lt;?</a>

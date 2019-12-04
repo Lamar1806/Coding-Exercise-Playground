@@ -1,0 +1,219 @@
+<!DOCTYPE HTML>
+<!--
+ ______   __  __     ______        ______     ______     __    __        ______     ______     ______     __  __     ______
+/\__  _\ /\ \_\ \   /\  ___\      /\  __ \   /\  __ \   /\ "-./  \      /\  ___\   /\  == \   /\  __ \   /\ \/\ \   /\  == \
+\/_/\ \/ \ \  __ \  \ \  __\      \ \  __ \  \ \  __ \  \ \ \-./\ \     \ \ \__ \  \ \  __<   \ \ \/\ \  \ \ \_\ \  \ \  _-/
+   \ \_\  \ \_\ \_\  \ \_____\     \ \_\ \_\  \ \_\ \_\  \ \_\ \ \_\     \ \_____\  \ \_\ \_\  \ \_____\  \ \_____\  \ \_\
+    \/_/   \/_/\/_/   \/_____/      \/_/\/_/   \/_/\/_/   \/_/  \/_/      \/_____/   \/_/ /_/   \/_____/   \/_____/   \/_/
+    Created with <3: David Ayers, © 2015 AAM Group. All rights reserved.
+-->
+<html>
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <title>The AAM Group</title>
+
+  <!-- CSS
+  ================================================== -->
+  <style>
+    *{
+      box-sizing: border-box;
+      padding: 0;
+      margin: 0;
+    }
+
+    body{
+      background: black;
+    }
+    hr{
+      display: none;
+    }
+    a{
+      display: none;
+    }
+    body > div > div {
+      display: flex;
+      justify-content: center;
+      height: 100px;
+      color: white;
+      /* background: black; */
+    }
+    
+  </style>
+
+  <!-- JAVASCRIPT
+  ================================================== -->
+  <script type="text/javascript" src="http://code.jquery.com/jquery-1.11.1.min.js"></script>
+
+
+</head>
+<body>
+
+  <!-- NO CHANGES BELOW THIS LINE
+  ================================================== -->
+  Using the below HTML, using ONLY CSS and JavaScript/jQuery create the following (<a href="test.gif">see attached gif animation</a>):
+
+  <hr /><br />
+
+  <div style="width:800px;height:800px;border: medium #999999 solid">
+    <div>This is a cube</div>
+    <div>This is a triangle</div>
+    <div>This is a big, green circle</div>
+  </div>
+
+  <br /><hr />
+
+  <strong>Rules: </strong><br />
+  - The HTML cannot be modified in any way<br />
+  - No 3rd party JavaScript or jQuery plugins can be used for the animation portion<br />
+  - If you get stuck or are confused, ask for help. The point isn't for you to be stuck. Just to see what you come up with. ( <a href="mailto:davida@theaamgroup.com" target="_blank">davida@theaamgroup.com</a> )<br />
+  - Compatibility: IE, Firefox, Chrome<br />
+
+</body>
+<script>
+    let bodySetUp = ()=>{   
+        let body = document.querySelector('body');
+        body.style.cssText = "background-color: black"
+    }
+
+    let mainDivContainerSetUp = () =>{
+        let divContainer = document.querySelector('body')
+                                    .querySelector('div')
+                                    .style.cssText = "margin: 0px auto;"
+                                                    +"display: flex;"
+                                                    +"padding: 40px 40px;"
+                                                    +"position: relative;"
+                                                    +"height: 70vh !important;"
+                                                    +"width: 30vw !important;"
+                                                    +"top: 10vh !important;"
+                                                    +"border: none !important;"
+                                                    +"background: white;"
+    }
+
+    let squareSetUp = ()=>{
+        let square = document.querySelector('body')
+                                    .querySelector('div')
+                                    .childNodes[1];
+        console.log(square);
+
+        square.style.cssText= "background: rgb(26,26,26);"
+                        +"background: linear-gradient(180deg, rgba(26,26,26,1) 0%, rgba(95,95,95,1) 48%, rgba(26,26,26,1) 100%);"
+                        +"width: 200px;"
+                        +"height: 150px;"
+                        +"align-content: space-around;"
+                        +"display: flex;"
+                        +"justify-content: center;"
+                        +"align-items: center;"
+                        +"position: relative;"
+                        +"top: 0;"
+                        +"animation: square 3s infinite;"
+        
+        upDownAnimation(square, 0, 75, 1800);
+    }
+
+    let triangleSetUp = ()=>{
+        let triangle = document.querySelector('body')
+                                    .querySelector('div')
+                                    .childNodes[3];
+
+        triangle.style.cssText=  "position: relative;"
+                                +"top: 20%;"
+                                +"width: 150px;"
+                                +"height: 150px;"
+                                +"border-left: 130px solid transparent;"
+                                +"border-right: 130px solid transparent; "     
+                                +"border-bottom: 130px solid #D30000;"
+                                +"display: flex;"      
+                                +"justify-content: center;"
+                                +"text-align: center;"
+                                +"color: black;"
+                                +"position: relative;"
+                                +"top: 75%;"
+                                +"display: inline-block;"
+                                +"font-size: 0;"
+                                +"z-index: 2;"
+                                +"animation: triangle 3s infinite; "
+                                +"margin-left: 30px;"
+                                +"margin-right: 30px;"
+
+        let para = document.createElement("p");
+        let text = document.createTextNode('This is triangle');
+        para.appendChild(text);
+        para.id = "triangle";
+        para.style.cssText =  "display: block;"
+                              +"position: absolute;"
+                              +"top: 120px;"
+                              +"width: 150px;"
+                              +"left: -75px;"
+                              +"color: white;"
+                              +"z-index: 20;"
+                              +"font-size: 20px;"
+
+        let inserted = triangle.appendChild(para);
+        upDownAnimation(triangle, 0, 75, 2000);
+    }
+
+    let circleSetUp = ()=>{
+        let circle = document.querySelector('body')
+                                    .querySelector('div')
+                                    .childNodes[5];
+
+        circle.style.cssText=  "background: rgb(0,103,0);"
+                                +"background: radial-gradient(circle, rgba(0,103,0,1) 0%, rgba(0,145,1,1) 0%, rgba(0,103,0,1) 100%);"
+                                +"width: 200px;"
+                                +"height: 200px;"      
+                                +"border-radius: 50%;"
+                                +"display: flex;"
+                                +"justify-content: center;"
+                                +"align-items: center;"
+                                +"position: relative;"
+                                +"top: 40%;"      
+                                +"font-size: 0;"
+                                +"animation: rotate 2.5s infinite;"
+
+        let para = document.createElement("p");
+        let text = document.createTextNode('This is a big, green circle');
+        para.appendChild(text);
+        para.id = "circle";
+        para.style.cssText = "display: block;"   
+                            +"width: 15ch;"
+                            +"position: absolute;"
+                            +"left: 45px;"
+                            +"color: white;"
+                            +"z-index: 20;"
+                            +"font-size: 20px;"
+
+        let inserted = circle.appendChild(para);
+        // upDownAnimation(circle, 0, 120);
+        spin(circle);
+    }
+
+    let spin = (object)=>{
+        let degrees = 0
+        setInterval(() => {
+            degrees++;
+            object.style.transform = `rotate(${degrees}deg)`
+        }, 3.5);
+       
+    }
+
+    let upDownAnimation = (object, lowest, highest, miliseconds) => {
+        for(i = 0 ; i <= 3; i++){
+            $(object).animate({top: `${lowest}%`},miliseconds);
+            $(object).animate({top: `${highest}%`},miliseconds);
+        }
+    }
+
+
+    let appStart = ()=>{
+        bodySetUp();
+        mainDivContainerSetUp();
+        squareSetUp();
+        triangleSetUp();
+        circleSetUp();
+    }
+
+    appStart();
+         
+</script>
+
+</html>
